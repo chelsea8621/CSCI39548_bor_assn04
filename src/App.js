@@ -5,6 +5,9 @@ import UserProfile from './pages/UserProfile';
 import Login from './pages/Login';
 import axios from "axios"
 import './App.css'
+import AccountBalance from './pages/AccountBalance';
+
+
 
 class App extends Component {
   constructor() {
@@ -21,6 +24,10 @@ class App extends Component {
     }
   }    
 
+  balance=()=>
+  {
+    return this.state.accountBalance;
+  }
   async componentDidMount()
   {
     let debits=await axios.get("https://moj-api.herokuapp.com/debits")
@@ -50,20 +57,28 @@ class App extends Component {
     var creditsTotal=0;
     var debitsTotal=0;
     credits.forEach((credit)=>{
-      creditsTotal+=credit;
+      creditsTotal+=credit.amount;
     })
     debits.forEach((debit)=>{
-      debitsTotal+=debit;
+      debitsTotal+=debit.amount;
     })
     this.setState({accountBalance:creditsTotal-debitsTotal});
   }
-  addCredit=(credit)=>{
+  
+  addCredit=()=>{
+    console.log(this.state.credits);
+    var credit={
+      amount:50,
+      date:"111",
+      description:"ssf",
+      id:"c334"
+    }
     this.setState({credits:this.state.credits.concat(credit)});
     this.refreshBalance();
   }
 
-  addDebit=(debit)=>{
-    this.setState({debits:this.state.debits.concat(debit)});
+  addDebit=()=>{
+    this.setState({debits:this.state.debits.concat()});
     this.refreshBalance();
   }
 
@@ -72,7 +87,9 @@ class App extends Component {
       newUser.userName = logInInfo.userName
       this.setState({currentUser: newUser})
   }
-
+        
+            
+        
   
   render() {
 
@@ -85,15 +102,26 @@ class App extends Component {
     
 
 
-    return (
+    return ( 
+    
+    
         <Router>
           <div>
+            <button onClick={this.addCredit}>
+                Add credit
+            </button>
             <Route exact path="/" render={HomeComponent}/>
             <Route exact path="/userProfile" render={UserProfileComponent}/>
             <Route exact path="/login" render={LogInComponent}/>
+            <AccountBalance accountBalance={this.state.accountBalance}/>
+
           </div>
         </Router>
+        
+
+
     );
+
   }
 }
 
