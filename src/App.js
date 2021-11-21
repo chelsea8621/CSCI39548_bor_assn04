@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import UserProfile from './pages/UserProfile';
 import Login from './pages/Login';
 import Debits from './pages/Debits';
+import Credits from './pages/Credits';
 import axios from "axios"
 import './App.css'
 import AccountBalance from './pages/AccountBalance';
@@ -63,15 +64,14 @@ class App extends Component {
     })
   }
   
-  addCredit=()=>{
-    console.log(this.state.credits);
-    let credit={
-      amount:50,
-      date:"111",
-      description:"ssf",
-      id:"c334"
-    }
-    this.setState({credits:this.state.credits.concat(credit)});
+  addCredit = (e) => {
+    e.preventDefault();
+    this.setState({ credits: this.state.credits.concat([{
+      id: crypto.randomUUID(),
+      amount: parseFloat(e.target.elements.amount.value),
+      description: e.target.elements.description.value,
+      date: new Date().toISOString(),
+    }]) });
     this.refreshBalance();
   }
 
@@ -104,7 +104,8 @@ class App extends Component {
     );
     const LogInComponent = () => (<Login user={this.state.currentUser} mockLogIn={this.mockLogIn} />);
     const DebitsComponent = () => (<Debits addDebit={this.addDebit} debits={this.state.debits} accountBalance={this.state.accountBalance}/>);
-    
+    const CreditsComponent = () => (<Credits addCredit={this.addCredit} credits={this.state.credits} accountBalance={this.state.accountBalance}/>);
+
 
 
     return ( 
@@ -116,6 +117,8 @@ class App extends Component {
             <Route exact path="/userProfile" render={UserProfileComponent}/>
             <Route exact path="/login" render={LogInComponent}/>
             <Route exact path="/debits" render={DebitsComponent}/>
+            <Route exact path="/credits" render={CreditsComponent}/>
+
             </Switch>
         </Router>
         
