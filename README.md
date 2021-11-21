@@ -1,8 +1,9 @@
 # Contributers
 
-Seth Spiegel - sethspiegel
-Shafali Gupta - shafali731
+## Seth Spiegel - sethspiegel
+## Shafali Gupta - shafali731
 
+# DEPLOYMENT SITE: https://chelsea8621.github.io/CSCI39548_bor_assn04/
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
