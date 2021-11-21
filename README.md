@@ -1,7 +1,7 @@
-**# Contributers**
+# Contributers
 
 Seth Spiegel - sethspiegel
-
+Shafali Gupta - shafali731
 
 # Getting Started with Create React App
 
