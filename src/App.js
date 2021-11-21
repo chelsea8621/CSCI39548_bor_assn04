@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Home from './pages/Home';
 import UserProfile from './pages/UserProfile';
 import Login from './pages/Login';
+import Debits from './pages/Debits';
 import axios from "axios"
 import './App.css'
 import AccountBalance from './pages/AccountBalance';
@@ -48,6 +49,9 @@ class App extends Component {
     let accountBalance=creditSum-debitSum;
     this.setState({debits,credits,accountBalance});
     console.log(debits);
+    console.log(debitSum)
+    console.log(creditSum)
+    console.log(this.state.accountBalance)
   }
 
   refreshBalance=()=>{
@@ -98,7 +102,8 @@ class App extends Component {
         <UserProfile userName={this.state.currentUser.userName} memberSince={this.state.currentUser.memberSince}  />
     
     );
-    const LogInComponent = () => (<Login user={this.state.currentUser} mockLogIn={this.mockLogIn} />)
+    const LogInComponent = () => (<Login user={this.state.currentUser} mockLogIn={this.mockLogIn} />);
+    const DebitsComponent = () => (<Debits debits={this.state.debits} accountBalance={this.state.accountBalance}/>);
     
 
 
@@ -106,18 +111,17 @@ class App extends Component {
     
     
         <Router>
-          <div>
-            <button onClick={this.addCredit}>
-                Add credit
-            </button>
+            <div>
+            <Switch>
             <Route exact path="/" render={HomeComponent}/>
             <Route exact path="/userProfile" render={UserProfileComponent}/>
             <Route exact path="/login" render={LogInComponent}/>
-            <AccountBalance accountBalance={this.state.accountBalance}/>
-
+            <Route exact path="/debits" render={DebitsComponent}/>
+            </Switch>
           </div>
         </Router>
         
+//            <AccountBalance accountBalance={this.state.accountBalance}/>
 
 
     );
@@ -126,3 +130,9 @@ class App extends Component {
 }
 
 export default App
+
+/* <div>
+<button onClick={this.addCredit}>
+    Add credit
+</button>
+</div> */
