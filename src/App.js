@@ -111,7 +111,7 @@ class App extends Component {
     return ( 
     
     
-        <Router>
+        <Router basename="/CSCI39548_bor_assn04">
             <Switch>
             <Route exact path="/" render={HomeComponent}/>
             <Route exact path="/userProfile" render={UserProfileComponent}/>

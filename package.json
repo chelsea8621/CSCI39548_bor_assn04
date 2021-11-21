@@ -2,6 +2,7 @@
   "name": "bank-of-react",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://chelsea8621.github.io/CSCI39548_bor_assn04",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
