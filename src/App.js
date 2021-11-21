@@ -22,6 +22,7 @@ class App extends Component {
       },
       debits: [],
       credits:[],
+      fetchedInitialData: false,
     }
   }    
 
@@ -31,47 +32,40 @@ class App extends Component {
   }
   async componentDidMount()
   {
-    let debits=await axios.get("https://moj-api.herokuapp.com/debits")
-    let credits=await axios.get("https://moj-api.herokuapp.com/credits")
+    let debits = this.state.debits;
+    let credits = this.state.credits;
+    if (!this.state.fetchedInitialData) {
+      debits = (await axios.get("https://moj-api.herokuapp.com/debits")).data;
+      credits = (await axios.get("https://moj-api.herokuapp.com/credits")).data;
+      this.setState({ fetchedInitialData: true });
+    }
 
-    debits=debits.data
-    credits=credits.data
-
-    var creditSum=0;
-    var debitSum=0;
+    let creditSum=0;
+    let debitSum=0;
     debits.forEach((debit)=>{
       debitSum+=debit.amount
     })
     credits.forEach((credit)=>{
       creditSum+=credit.amount
     })
-
-    let accountBalance=creditSum-debitSum;
+    let accountBalance = (creditSum - debitSum).toFixed(2);
     this.setState({debits,credits,accountBalance});
-    console.log(debits);
-    console.log(debitSum)
-    console.log(creditSum)
-    console.log(this.state.accountBalance)
   }
 
-  refreshBalance=()=>{
-    var credits=this.state.credits;
-    var debits=this.state.debits;
+  refreshBalance = () => {
+    this.setState(state => {
+      const credits = state.credits;
+      const debits = state.debits;
 
-    var creditsTotal=0;
-    var debitsTotal=0;
-    credits.forEach((credit)=>{
-      creditsTotal+=credit.amount;
+      const creditsTotal = credits.reduce((a, b) => a + b.amount, 0);
+      const debitsTotal = debits.reduce((a, b) => a + b.amount, 0);
+      return {accountBalance: (creditsTotal - debitsTotal).toFixed(2)};
     })
-    debits.forEach((debit)=>{
-      debitsTotal+=debit.amount;
-    })
-    this.setState({accountBalance:creditsTotal-debitsTotal});
   }
   
   addCredit=()=>{
     console.log(this.state.credits);
-    var credit={
+    let credit={
       amount:50,
       date:"111",
       description:"ssf",
@@ -81,8 +75,14 @@ class App extends Component {
     this.refreshBalance();
   }
 
-  addDebit=()=>{
-    this.setState({debits:this.state.debits.concat()});
+  addDebit = (e) => {
+    e.preventDefault();
+    this.setState({ debits: this.state.debits.concat([{
+      id: crypto.randomUUID(),
+      amount: parseFloat(e.target.elements.amount.value),
+      description: e.target.elements.description.value,
+      date: new Date().toISOString(),
+    }]) });
     this.refreshBalance();
   }
 
@@ -103,7 +103,7 @@ class App extends Component {
     
     );
     const LogInComponent = () => (<Login user={this.state.currentUser} mockLogIn={this.mockLogIn} />);
-    const DebitsComponent = () => (<Debits debits={this.state.debits} accountBalance={this.state.accountBalance}/>);
+    const DebitsComponent = () => (<Debits addDebit={this.addDebit} debits={this.state.debits} accountBalance={this.state.accountBalance}/>);
     
 
 
@@ -111,14 +111,12 @@ class App extends Component {
     
     
         <Router>
-            <div>
             <Switch>
             <Route exact path="/" render={HomeComponent}/>
             <Route exact path="/userProfile" render={UserProfileComponent}/>
             <Route exact path="/login" render={LogInComponent}/>
             <Route exact path="/debits" render={DebitsComponent}/>
             </Switch>
-          </div>
         </Router>
         
 //            <AccountBalance accountBalance={this.state.accountBalance}/>
