@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import AccountBalance from './AccountBalance';
-
+import {Link} from 'react-router-dom';
 
 class LogIn extends Component {
   constructor () {
@@ -38,22 +38,25 @@ class LogIn extends Component {
     }
     
     return (
-      <div>
+      <div className='background'>
         <form onSubmit={this.handleSubmit}>
-          <div>
+          <div className='title'>
             <label htmlFor="userName">User Name</label>
             <input type="text" name="userName" onChange={this.handleChange} value={this.state.user.userName} />
           </div>
-          <div>
+          <div className='title'>
             <label htmlFor="password">Password</label>
             <input type="password" name="password" />
           </div>
 
-          <div>
-           <AccountBalance accountBalance={this.props.accountBalance}/>
-          </div>
           <button>Log In</button>
-
+          <div style={{textAlign: 'center'}}>
+            <Link className='link' to="/">Home </Link> 
+            <Link className='link' to="/userProfile">User Profile</Link> 
+            
+            <Link className='link' to="/Debits">Debits </Link> 
+            <Link className='link' to="/Credits">Credits </Link> 
+          </div>
           
         </form>
       </div>

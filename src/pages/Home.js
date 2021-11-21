@@ -9,15 +9,20 @@ class Home extends Component {
   render() {
     return (
         <div className='background'>
-          <img src="https://picsum.photos/201" alt="bank"/>
           <h1 className='title'>Bank of React</h1>
-          <div className='link'>
-            <Link  to="/userProfile">User Profile</Link> <br/>
-            <Link to="/Login">Login </Link> <br/>
-            <Link to="/Debits">Debits </Link> <br/> <br/>
-            <Link to="/Credits">Credits </Link> <br/> <br/>
+          <img className='picture' src="https://picsum.photos/201" alt="bank"/>
+          
+          <div style={{textAlign: 'center'}}>
+            <Link className='link' to="/userProfile">User Profile</Link> 
+            <Link className='link' to="/Login">Login </Link> 
+            <Link className='link' to="/Debits">Debits </Link> 
+            <Link className='link' to="/Credits">Credits </Link> 
           </div>
-          <AccountBalance accountBalance={this.props.accountBalance}/>
+          <div className='balance'>
+            <AccountBalance accountBalance={this.props.accountBalance}/>
+
+          </div>
+          
         </div>
     );
   }
