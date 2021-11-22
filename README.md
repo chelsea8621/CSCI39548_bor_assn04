@@ -3,6 +3,7 @@
 ## Jiajun Qiu -JayJay458
 ## Seth Spiegel - sethspiegel
 ## Shafali Gupta - shafali731
+## Chelsea Yu - chelsea8621
 
 # DEPLOYMENT SITE: https://chelsea8621.github.io/CSCI39548_bor_assn04/
 # Getting Started with Create React App
