@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/CSCI39548_bor_assn04/static/css/main.8c8b27cf.chunk.css",
-    "main.js": "/CSCI39548_bor_assn04/static/js/main.1fb985e5.chunk.js",
-    "main.js.map": "/CSCI39548_bor_assn04/static/js/main.1fb985e5.chunk.js.map",
-    "runtime-main.js": "/CSCI39548_bor_assn04/static/js/runtime-main.d131b6f1.js",
-    "runtime-main.js.map": "/CSCI39548_bor_assn04/static/js/runtime-main.d131b6f1.js.map",
-    "static/js/2.ec06d2ee.chunk.js": "/CSCI39548_bor_assn04/static/js/2.ec06d2ee.chunk.js",
-    "static/js/2.ec06d2ee.chunk.js.map": "/CSCI39548_bor_assn04/static/js/2.ec06d2ee.chunk.js.map",
-    "static/js/3.cc896697.chunk.js": "/CSCI39548_bor_assn04/static/js/3.cc896697.chunk.js",
-    "static/js/3.cc896697.chunk.js.map": "/CSCI39548_bor_assn04/static/js/3.cc896697.chunk.js.map",
+    "main.css": "/CSCI39548_bor_assn04/static/css/main.cee45b4c.chunk.css",
+    "main.js": "/CSCI39548_bor_assn04/static/js/main.c2ab8a6a.chunk.js",
+    "main.js.map": "/CSCI39548_bor_assn04/static/js/main.c2ab8a6a.chunk.js.map",
+    "runtime-main.js": "/CSCI39548_bor_assn04/static/js/runtime-main.acbb36a4.js",
+    "runtime-main.js.map": "/CSCI39548_bor_assn04/static/js/runtime-main.acbb36a4.js.map",
+    "static/js/2.48f0bdbb.chunk.js": "/CSCI39548_bor_assn04/static/js/2.48f0bdbb.chunk.js",
+    "static/js/2.48f0bdbb.chunk.js.map": "/CSCI39548_bor_assn04/static/js/2.48f0bdbb.chunk.js.map",
+    "static/js/3.cf8fcc4a.chunk.js": "/CSCI39548_bor_assn04/static/js/3.cf8fcc4a.chunk.js",
+    "static/js/3.cf8fcc4a.chunk.js.map": "/CSCI39548_bor_assn04/static/js/3.cf8fcc4a.chunk.js.map",
     "index.html": "/CSCI39548_bor_assn04/index.html",
-    "static/css/main.8c8b27cf.chunk.css.map": "/CSCI39548_bor_assn04/static/css/main.8c8b27cf.chunk.css.map",
-    "static/js/2.ec06d2ee.chunk.js.LICENSE.txt": "/CSCI39548_bor_assn04/static/js/2.ec06d2ee.chunk.js.LICENSE.txt"
+    "static/css/main.cee45b4c.chunk.css.map": "/CSCI39548_bor_assn04/static/css/main.cee45b4c.chunk.css.map",
+    "static/js/2.48f0bdbb.chunk.js.LICENSE.txt": "/CSCI39548_bor_assn04/static/js/2.48f0bdbb.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.d131b6f1.js",
-    "static/js/2.ec06d2ee.chunk.js",
-    "static/css/main.8c8b27cf.chunk.css",
-    "static/js/main.1fb985e5.chunk.js"
+    "static/js/runtime-main.acbb36a4.js",
+    "static/js/2.48f0bdbb.chunk.js",
+    "static/css/main.cee45b4c.chunk.css",
+    "static/js/main.c2ab8a6a.chunk.js"
   ]
 }
