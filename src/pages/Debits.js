@@ -9,15 +9,16 @@ class Debits extends Component {
     render() {
         let debits = this.props.debits;
         return (
-            <div>
-                <h1>Debits</h1>
-                <div>
+            <div className='background'>
+                <h1 className='title'>Debits</h1>
+                <div className='history'>
                     {debits.map(debit => (
                         <div key={debit.id}>
                             <li>{debit.amount} {debit.description} {debit.date.slice(0, 10)}</li>
                         </div>
                     ))}
-                    <AccountBalance accountBalance={this.props.accountBalance}/>
+                    <div className='balance'><AccountBalance accountBalance={this.props.accountBalance}/></div>
+                    
                     <form onSubmit={this.props.addDebit}>
                         <p>
                             <label id="description"> Description: </label>
@@ -27,10 +28,13 @@ class Debits extends Component {
                             <button type="submit"> Submit</button>
                         </p>
                     </form>
+                    <div className='link'>
                     <Link to="/"> Home </Link>
                     <Link to="/Login"> Login </Link>
                     <Link to="/UserProfile"> User Profile </Link>
                     <Link to="/Credits"> Credits </Link>
+                    </div>
+
 
                 </div>
             </div>
